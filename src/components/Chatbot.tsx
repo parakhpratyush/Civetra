@@ -52,7 +52,7 @@ export default function Chatbot() {
       } else {
         setMessages(prev => [...prev, { 
           role: 'bot', 
-          text: "I'm currently in 'Static Mode' without my full AI Brain. I can answer basic questions about Civetra, but for full AI conversation, please use our primary link!" 
+          text: "I'm currently in 'Static Mode' without my full AI Brain. I can answer basic questions about Civetra, but for full AI conversation, please use our primary link: https://civetra-ai-brain--civetra.us-east4.hosted.app" 
         }]);
       }
     } finally {
