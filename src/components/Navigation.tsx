@@ -91,7 +91,10 @@ export default function Navigation() {
                   <img 
                     src="/logo.png" 
                     alt="Civetra Logo" 
-                    className="w-10 h-10 md:w-12 md:h-12 rounded-xl object-cover shadow-lg border border-white/10"
+                    className="w-10 h-10 md:w-12 md:h-12 rounded-xl object-contain shadow-lg border border-white/10 bg-white/5"
+                    onError={(e) => {
+                      e.currentTarget.src = 'https://api.dicebear.com/7.x/initials/svg?seed=Civetra';
+                    }}
                   />
                   <span 
                     className={`transition-all duration-300 ${isDark ? 'text-white text-2xl tracking-widest' : 'text-slate-900 text-4xl tracking-wide'}`} 
