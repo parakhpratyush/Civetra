@@ -89,7 +89,7 @@ export default function Navigation() {
               <motion.div whileHover={{ scale: 1.05 }} className="pointer-events-auto">
                 <Link to="/" className="flex items-center gap-3" aria-label="Go to homepage">
                   <img 
-                    src="/pwa-192x192.png" 
+                    src="/logo.png" 
                     alt="Civetra Logo" 
                     className="w-10 h-10 md:w-12 md:h-12 rounded-xl object-cover shadow-lg border border-white/10"
                   />
