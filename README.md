@@ -23,13 +23,29 @@ Civetra's core feature, the **Civic Lens**, provides a "Google Lens" style exper
 
 ---
 
-## 🛠️ Tech Stack
-- **AI/ML**: Google Gemini API (Pro Vision, Flash)
-- **Frontend**: React.js, Tailwind CSS, Framer Motion, Three.js
-- **Backend**: Node.js, Express
-- **Database**: Firebase Firestore (Real-time sync)
-- **Auth**: Firebase Authentication
-- **Cloud**: Google Cloud App Hosting, Cloud Run, Firebase Hosting
+## 🛠️ Tech Stack & Ecosystem
+
+### 🤖 Agentic & AI Core
+- **Antigravity**: Utilized the **Antigravity** agentic framework for rapid, intelligent development and complex logic orchestration.
+- **Google Gemini API**: 
+  - **Gemini Pro Vision**: Powering the "Civic Lens" for visual infrastructure analysis.
+  - **Gemini Flash**: Driving the real-time CivicBot and predictive community foresight.
+
+### ☁️ Google Cloud & Firebase Ecosystem
+- **Google Cloud Platform (GCP)**:
+  - **Cloud Run**: Scalable containerized execution for the AI backend.
+  - **App Hosting**: Enterprise-grade hosting for the full-stack Node.js environment.
+- **Google Firebase**:
+  - **Firestore**: Real-time NoSQL database for instant community synchronization.
+  - **Authentication**: Secure identity management for citizens and admins.
+  - **Hosting**: Global CDN for lightning-fast frontend delivery.
+  - **Security Rules**: Granular database protection.
+
+### 🏗️ Foundational Web Technologies
+- **Core Stack**: HTML5, CSS3, JavaScript (ES6+), and TypeScript for a robust, type-safe codebase.
+- **Frameworks**: React (Vite) for the UI, Node.js & Express for the backend.
+- **Styling & Motion**: Tailwind CSS and Framer Motion for a premium, high-performance user experience.
+- **Visualization**: Three.js & React Three Fiber for interactive 3D elements.
 
 ---
 
