@@ -1,5 +1,6 @@
 {
-  "name": "react-example",
+  "name": "civetra",
+  "description": "AI-powered civic platform using Gemini Pro Vision for automated infrastructure analysis.",
   "private": true,
   "version": "0.0.0",
   "type": "module",

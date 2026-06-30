@@ -1,8 +1,8 @@
-# 🛡️ Civetra: The AI-Powered Civic Trust Engine
+# 🛡️ Civetra: The Gemini Pro Vision Civic Engine
 
-**Empowering communities through visual intelligence.**
+**Visual Intelligence for Smarter Cities.**
 
-Civetra is a state-of-the-art platform that bridges the gap between citizens and city administration. By turning every smartphone into a sophisticated civic sensor, we ensure that no pothole, broken light, or waste issue goes unnoticed.
+Civetra is a cutting-edge platform powered by **Google's Gemini Pro Vision**. We turn every photo of a civic issue into actionable data using advanced visual AI.
 
 ---
 
