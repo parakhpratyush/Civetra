@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Loader2, X } from 'lucide-react';
 import { useTheme } from '../ThemeContext';
+import { FALLBACK_QA } from '../data/fallbackChat';
 
 export default function Chatbot() {
   const { isDark } = useTheme();
@@ -23,7 +24,8 @@ export default function Chatbot() {
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
     
-    const userMessage = { role: 'user', text: input.trim() };
+    const userMessageText = input.trim();
+    const userMessage = { role: 'user', text: userMessageText };
     setMessages(prev => [...prev, userMessage]);
     setInput('');
     setIsLoading(true);
@@ -32,12 +34,27 @@ export default function Chatbot() {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userMessage.text, history: messages })
+        body: JSON.stringify({ message: userMessageText, history: messages })
       });
+      
+      if (!res.ok) throw new Error('Backend unavailable');
+      
       const data = await res.json();
       setMessages(prev => [...prev, { role: 'bot', text: data.reply || "Sorry, I couldn't process that." }]);
     } catch (error) {
-      setMessages(prev => [...prev, { role: 'bot', text: "Connection error. Please try again later." }]);
+      console.warn("Chatbot backend unavailable, trying local fallback...");
+      
+      const lowerInput = userMessageText.toLowerCase();
+      let fallbackMatch = FALLBACK_QA.find(qa => qa.pattern.test(lowerInput));
+      
+      if (fallbackMatch) {
+        setMessages(prev => [...prev, { role: 'bot', text: fallbackMatch!.response }]);
+      } else {
+        setMessages(prev => [...prev, { 
+          role: 'bot', 
+          text: "I'm currently in 'Static Mode' without my full AI Brain. I can answer basic questions about Civetra, but for full AI conversation, please use our primary link!" 
+        }]);
+      }
     } finally {
       setIsLoading(false);
     }
