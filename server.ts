@@ -74,9 +74,9 @@ Example response:
       const model = getAIModel();
 
       const prompt = `Analyze this civic issue report and extract the following in JSON format:
-- category: BE HIGHLY SPECIFIC AND GRANULAR. Do NOT use generic terms like "Infrastructure" or "Sanitation". Instead, name the exact physical issue (e.g., "Pothole", "Landfill", "Dirty River", "Broken Streetlight", "Water Leakage", "Fallen Tree", "Open Sewer").
+- category: BE EXTREMELY SPECIFIC. Do NOT use generic terms like "Infrastructure", "Sanitation", or "General Issue". You MUST identify the exact physical problem (e.g., "Landfill", "Garbage Dump", "Illegal Dumping", "Pothole", "Broken Streetlight", "Water Pipe Leakage", "Sewer Overflow", "Fallen Tree"). If it's a massive pile of waste, it is a "Landfill" or "Garbage Dump".
 - severity: "Low", "Medium", "High", or "Critical".
-- title: A short, clear title for the issue.
+- title: A very short, punchy, and descriptive title. Do NOT use generic words like "Issue" or "Problem" in the title (e.g., "Massive Landfill at Ghazipur" instead of "General Issue").
 - tags: Array of 2-3 relevant tags.
 
 User Description: ${description || "No description provided."}

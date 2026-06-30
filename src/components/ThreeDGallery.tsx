@@ -43,11 +43,14 @@ export function ThreeDGallery({ issues, isDark }: ThreeDGalleryProps) {
 
   // Smooth animation loop for cube rotation and parallax
   useEffect(() => {
+    let autoRotationY = 0;
     const animate = () => {
+      autoRotationY += 0.2; // Slow continuous spin
+      
       setCurrentRotation(prev => {
         const ease = 0.05;
         const nextX = prev.x + (targetRotation.x - prev.x) * ease;
-        const nextY = prev.y + (targetRotation.y - prev.y) * ease;
+        const nextY = prev.y + (targetRotation.y - prev.y) * ease + 0.2; // Add constant spin
         return { x: nextX, y: nextY };
       });
       rafRef.current = requestAnimationFrame(animate);
@@ -151,6 +154,15 @@ export function ThreeDGallery({ issues, isDark }: ThreeDGalleryProps) {
         <span>Ref. EDI-032026-R02</span>
       </div>
 
+      {/* Ambient Background Glow */}
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-20 blur-[120px] pointer-events-none"
+        style={{ 
+          background: `radial-gradient(circle, ${isDark ? '#ff4300' : '#ff4300'}, transparent 70%)`,
+          animation: 'pulse 8s infinite alternate'
+        }}
+      />
+
       <div className="absolute top-10 right-[400px] text-white/40 text-xs tracking-widest">
         Featured Works, Archive, About
       </div>
@@ -193,7 +205,7 @@ export function ThreeDGallery({ issues, isDark }: ThreeDGalleryProps) {
                   return (
                     <div 
                       key={tileIndex} 
-                      className="w-full h-full relative overflow-hidden group bg-transparent"
+                      className={`w-full h-full relative overflow-hidden group transition-all duration-500 ${isHoveredIssue ? 'z-20 scale-105 shadow-[0_0_30px_rgba(255,67,0,0.5)] border-2 border-[#ff4300]' : 'z-10 opacity-40 grayscale-[0.5]'}`}
                       onClick={(e) => {
                         e.stopPropagation();
                         if (issue) handleClickIssue(issue);
@@ -203,12 +215,16 @@ export function ThreeDGallery({ issues, isDark }: ThreeDGalleryProps) {
                         <img 
                           src={photo} 
                           alt="" 
-                          className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-110 ${isHoveredIssue ? 'opacity-100' : 'opacity-0'}`}
+                          className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                         />
                       ) : (
-                        <div className={`w-full h-full flex items-center justify-center transition-all duration-700 ${isHoveredIssue ? 'opacity-100' : 'opacity-0'}`}>
-                          <span className="text-3xl opacity-20">📌</span>
+                        <div className="w-full h-full flex items-center justify-center bg-white/5">
+                          <span className="text-xl opacity-20">📌</span>
                         </div>
+                      )}
+                      
+                      {isHoveredIssue && (
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#ff4300]/40 to-transparent pointer-events-none" />
                       )}
                     </div>
                   );
@@ -285,6 +301,10 @@ export function ThreeDGallery({ issues, isDark }: ThreeDGalleryProps) {
       )}
       
       <style>{`
+        @keyframes pulse {
+          0% { opacity: 0.1; transform: translate(-50%, -50%) scale(0.8); }
+          100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1.2); }
+        }
         .custom-scrollbar::-webkit-scrollbar {
           width: 4px;
         }
