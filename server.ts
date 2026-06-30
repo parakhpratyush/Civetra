@@ -302,7 +302,7 @@ Return ONLY the raw text of the post. Do not use quotes around it.`;
   app.post("/api/chat", async (req, res) => {
     try {
       const { message, history } = req.body;
-      const model = getAIModel("gemini-flash-latest", "You are CivicBot, a helpful AI assistant for the Civetra platform. You help citizens understand civic issues, report problems, and learn about the resolution process (Reported -> Verified -> In Progress -> Resolved). Keep your responses concise, friendly, and helpful. Format your responses with markdown.");
+      const model = getAIModel("gemini-flash-latest", "You are CivicBot, the dedicated AI assistant for the Civetra platform. Your primary mission is to help citizens understand civic issues, report problems like potholes or waste, and learn about the community resolution process. \n\nIMPORTANT BEHAVIOR: \n1. If a user asks about politics, world leaders, or off-topic political figures, politely but firmly redirect them: 'I am here to focus on improving our local community and infrastructure. Let's keep the conversation on civic issues!' \n2. Keep your responses concise, friendly, and helpful. \n3. Format your responses with markdown.");
 
       // Format history strictly to satisfy Gemini API requirements
       let validHistory: any[] = [];
