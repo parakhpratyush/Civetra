@@ -1,20 +1,25 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Civetra: An AI-Powered Civic Trust Engine
 
-# Run and deploy your AI Studio app
+Civetra is a comprehensive platform designed to empower citizens to report and track urban infrastructure issues such as potholes, waste management, and public lighting. 
 
-This contains everything you need to run your app locally.
+## 🚀 Powered by Google Gemini
+The core "AI Brain" of Civetra utilizes **Google's Gemini Pro Vision** to analyze images of reported issues. This allows for:
+- **Automated Categorization**: Instantly identifying the type of issue from a photo.
+- **Severity Assessment**: AI-driven analysis to prioritize critical civic problems.
+- **Smart Moderation**: Ensuring platform integrity through enterprise-grade content moderation.
 
-View your app in AI Studio: https://ai.studio/apps/c83f4d36-93c9-422d-bb7e-41ed5a9dccf9
+## 🛠️ Tech Stack
+- **AI**: Google Gemini API (Gemini Pro Vision, Gemini Flash)
+- **Backend**: Node.js & Express
+- **Frontend**: React (Vite), Tailwind CSS, Framer Motion
+- **Database**: Firebase Firestore
+- **Hosting**: Firebase Hosting & Google Cloud Run
 
-## Run Locally
+## 🌟 Features
+- **Real-time Spatial Mapping**: Visualizing community issues on an interactive map.
+- **Predictive Insights**: AI analysis of urban patterns to optimize resource allocation.
+- **Community Impact**: Digital badges and certificates for active civic contributors.
+- **3D Visualization**: Interactive WebGL-powered dashboard for issue tracking.
 
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+---
+*Built for the Google Gemini Hackathon.*
