@@ -87,7 +87,12 @@ export default function Navigation() {
             
             <div className="px-6 py-4 md:px-12 md:py-6 flex justify-between items-center w-full">
               <motion.div whileHover={{ scale: 1.05 }} className="pointer-events-auto">
-                <Link to="/" className="flex items-center gap-2" aria-label="Go to homepage">
+                <Link to="/" className="flex items-center gap-3" aria-label="Go to homepage">
+                  <img 
+                    src="/pwa-192x192.png" 
+                    alt="Civetra Logo" 
+                    className="w-10 h-10 md:w-12 md:h-12 rounded-xl object-cover shadow-lg border border-white/10"
+                  />
                   <span 
                     className={`transition-all duration-300 ${isDark ? 'text-white text-2xl tracking-widest' : 'text-slate-900 text-4xl tracking-wide'}`} 
                     style={{ fontFamily: isDark ? "'Knewave', display" : "'Great Vibes', cursive" }}
