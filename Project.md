@@ -21,3 +21,6 @@ Civetra is built as a multi-modal agentic platform. It doesn't just display data
 - `users`: Profiles, badges, and civic reputation scores.
 - `issues`: Geo-tagged reports with AI-generated metadata.
 - `admin`: Elevated access controls for verification and resolution.
+
+---
+*Built for the vibe2ship Hackathon.*

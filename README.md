@@ -93,4 +93,4 @@ The application is optimized for **Google Cloud App Hosting**.
 ```
 
 ---
-*Built with ❤️ for the Google Gemini Hackathon.*
+*Built with ❤️ for the vibe2ship Hackathon.*
