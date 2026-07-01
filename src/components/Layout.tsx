@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../ThemeContext';
 import Chatbot from './Chatbot';
+import { CustomCursor } from './CustomCursor';
 import { Sun, Moon } from 'lucide-react';
 
 interface LayoutProps {
@@ -18,7 +19,7 @@ export default function Layout({ children, header, isFullScreen }: LayoutProps) 
   const languages = ["English", "Hindi", "Urdu", "Telugu", "Tamil", "Spanish", "French", "German", "Mandarin", "Arabic"];
 
   return (
-    <div className={`min-h-screen grid grid-rows-[auto_1fr_auto] relative overflow-hidden select-none transition-colors duration-700 ${isDark ? 'dark bg-[#030308] text-[#e2e2e4] font-sans' : 'bg-[#FAFAF8] text-[#1a1a1a] font-serif'}`}>
+    <div className={`min-h-screen grid grid-rows-[auto_1fr_auto] relative overflow-hidden select-none transition-colors duration-700 cursor-none ${isDark ? 'dark bg-[#030308] text-[#e2e2e4] font-sans' : 'bg-[#FAFAF8] text-[#1a1a1a] font-serif'}`}>
 
       {/* BACKGROUND ELEMENTS (DARK ONLY) */}
       <AnimatePresence>
@@ -204,6 +205,9 @@ export default function Layout({ children, header, isFullScreen }: LayoutProps) 
 
       {/* Floating Chatbot Component */}
       <Chatbot />
+      
+      {/* Custom Global Cursor */}
+      <CustomCursor />
     </div>
   );
 }

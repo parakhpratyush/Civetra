@@ -98,7 +98,25 @@ User Description: ${description || "No description provided."}
       const response = await result.response;
       const text = response.text();
 
-      let jsonResponse = JSON.parse(text || "{}");
+      // Robust JSON extraction
+      let jsonResponse: any = {};
+      try {
+        const jsonMatch = text.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+          jsonResponse = JSON.parse(jsonMatch[0]);
+        } else {
+          jsonResponse = JSON.parse(text);
+        }
+      } catch (e) {
+        console.warn("Failed to parse Gemini JSON, text was:", text);
+        // Emergency fallback if AI fails to give JSON
+        jsonResponse = {
+          category: "Community Report",
+          severity: "Medium",
+          title: description?.slice(0, 40) || "Civic Report",
+          tags: ["civic"]
+        };
+      }
       res.json(jsonResponse);
 
     } catch (error: any) {

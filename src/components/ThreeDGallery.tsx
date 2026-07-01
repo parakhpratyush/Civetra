@@ -186,12 +186,11 @@ export function ThreeDGallery({ issues, isDark }: ThreeDGalleryProps) {
                 style={{
                   width: CUBE_SIZE,
                   height: CUBE_SIZE,
-                  transform: `rotateX(${face.rx}deg) rotateY(${face.ry}deg) translateZ(${HALF_SIZE}px)`,
+                  transform: `rotateX(${face.rx}deg) rotateY(${face.ry}deg) translateZ(${HALF_SIZE - 1}px)`,
                   backfaceVisibility: 'hidden',
                   display: 'grid',
                   gridTemplateColumns: `repeat(${gridSize}, 1fr)`,
                   gridTemplateRows: `repeat(${gridSize}, 1fr)`,
-                  gap: '2px', // Thin gap between tiles
                   background: 'transparent'
                 }}
               >

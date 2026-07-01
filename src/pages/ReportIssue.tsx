@@ -360,9 +360,9 @@ export function ReportIssue() {
       const { collection, addDoc, serverTimestamp, doc: firestoreDoc } = await import("firebase/firestore");
       const { db } = await import("../lib/firebase");
       
-      const generatedCategory = aiData.category || "General Issue";
+      const generatedCategory = aiData.category || "Civic Report";
       const generatedSeverity = aiData.severity || "Medium";
-      const generatedTitle = aiData.title || `${generatedCategory} Issue`;
+      const generatedTitle = aiData.title || generatedCategory;
       const generatedTags = aiData.tags || [generatedCategory.toLowerCase()];
       
       // Fallback icon based on category string
