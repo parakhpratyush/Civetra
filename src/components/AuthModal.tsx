@@ -226,17 +226,28 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
       onClose();
       navigate('/dashboard');
     } catch (err: any) {
-      console.error("Google Auth error:", err);
+      console.error("❌ Google Auth Critical Error:", err);
       if (auth.currentUser) await signOut(auth);
       
       let customError = 'Google Authentication failed. Please try again.';
-      if (err.code === 'auth/account-exists-with-different-credential') {
-        customError = 'You already have an account. Login using that.';
+      
+      if (err.code === 'auth/popup-closed-by-user') {
+        customError = 'Login popup was closed. Please keep the window open until login completes.';
+      } else if (err.code === 'auth/popup-blocked') {
+        customError = 'Login popup was blocked by your browser. Please allow popups for this site.';
+      } else if (err.code === 'auth/cancelled-popup-request') {
+        customError = 'Multiple login attempts detected. Please wait a moment.';
+      } else if (err.code === 'auth/account-exists-with-different-credential') {
+        customError = 'You already have an account with this email. Please log in with your password.';
       } else if (err.code === 'permission-denied') {
-        customError = 'Google Authentication failed. Please check your Firestore Rules.';
+        customError = 'Access denied. Please check your internet connection or Firestore permissions.';
+      } else if (err.message?.includes('Cross-Origin-Opener-Policy')) {
+        customError = 'Security error: Please try using a private window or clearing your browser cache.';
       }
       
       setError(customError);
+      // Auto-clear error after 5 seconds to let them try again
+      setTimeout(() => setError(''), 5000);
     } finally {
       setLoading(false);
     }
