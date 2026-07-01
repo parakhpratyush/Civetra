@@ -107,16 +107,21 @@ export default function Chatbot() {
             {/* Input */}
             <div className={`p-4 border-t flex gap-2 ${isDark ? 'border-white/10 bg-white/5' : 'border-black/5 bg-black/5'}`}>
               <input 
+                id="chatbot-query-input"
                 type="text" 
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && handleSend()}
                 placeholder="Ask about civic issues..."
                 className={`flex-1 bg-transparent px-3 py-2 outline-none text-sm placeholder:opacity-50 ${isDark ? 'text-white' : 'text-black'}`}
+                title="Type your question for CivicBot"
+                aria-label="Ask CivicBot"
               />
               <button 
                 onClick={handleSend}
                 disabled={!input.trim() || isLoading}
+                title="Send your message to CivicBot"
+                aria-label="Send Message"
                 className={`w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-full transition-all ${!input.trim() || isLoading ? 'opacity-50 opacity-50' : 'hover:scale-110 '} ${isDark ? 'bg-primary text-black' : 'bg-[#1a1a1a] text-white'}`}
               >
                 <Send className="w-4 h-4" />

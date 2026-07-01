@@ -80,9 +80,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
         }
 
         onClose();
-        if (!adminSnap.empty) {
-          navigate('/c-admin');
-        }
+        navigate('/dashboard');
       } else {
         let user;
         let isPreProvisionedAdmin = false;
@@ -135,9 +133,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
           }, { merge: true });
         }
         onClose();
-        if (isPreProvisionedAdmin) {
-          navigate('/c-admin');
-        }
+        navigate('/dashboard');
       }
     } catch (err: any) {
       console.error("Signup error:", err);
@@ -167,6 +163,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
     setLoading(true);
     try {
       const provider = new GoogleAuthProvider();
+      provider.setCustomParameters({ prompt: 'select_account' });
       const userCredential = await signInWithPopup(auth, provider);
       const user = userCredential.user;
       const additionalInfo = getAdditionalUserInfo(userCredential);
@@ -227,10 +224,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
       }
       
       onClose();
-      
-      if (isPreProvisionedAdmin) {
-        navigate('/c-admin');
-      }
+      navigate('/dashboard');
     } catch (err: any) {
       console.error("Google Auth error:", err);
       if (auth.currentUser) await signOut(auth);
@@ -287,7 +281,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
 
             {/* Right Form Pane */}
             <div className="w-full md:w-1/2 p-8 md:p-12 relative max-h-[85vh] overflow-y-auto no-scrollbar">
-              <button onClick={onClose} className={`absolute top-6 right-6 p-2 rounded-full transition-colors z-10 ${isDark ? 'hover:bg-white/10' : 'hover:bg-black/10'}`}>
+              <button onClick={onClose} className={`absolute top-6 right-6 p-2 rounded-full transition-colors z-10 ${isDark ? 'hover:bg-white/10' : 'hover:bg-black/10'}`} title="Close Authentication Modal" aria-label="Close">
                 <X className="w-5 h-5" />
               </button>
 
@@ -306,20 +300,22 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4" aria-label={isLogin ? "Sign In Form" : "Sign Up Form"}>
               {!isLogin && (
                 <div className="space-y-4">
                   <div>
-                    <label className={`block text-xs font-bold tracking-widest uppercase mb-2 ${isDark ? 'text-white/50' : 'text-black/50'}`}>Full Name</label>
+                    <label htmlFor="signup-name" className={`block text-xs font-bold tracking-widest uppercase mb-2 ${isDark ? 'text-white/50' : 'text-black/50'}`}>Full Name</label>
                     <div className="relative">
                       <User className={`absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 ${isDark ? 'text-white/40' : 'text-black/40'}`} />
                       <input 
+                        id="signup-name"
                         type="text" 
                         required
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         className={`w-full pl-12 pr-4 py-3 rounded-xl border outline-none transition-colors ${isDark ? 'bg-black/50 border-white/10 focus:border-white/30 placeholder:text-white/30' : 'bg-white border-black/10 focus:border-black/30 placeholder:text-black/30'}`}
                         placeholder="John Doe"
+                        title="Enter your full name"
                       />
                     </div>
                   </div>
@@ -347,6 +343,8 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                         onChange={(e) => setCustomAvatarUrl(e.target.value)}
                         className={`w-full pl-12 pr-4 py-3 rounded-xl border outline-none transition-colors text-xs ${isDark ? 'bg-black/50 border-white/10 focus:border-white/30 placeholder:text-white/30' : 'bg-white border-black/10 focus:border-black/30 placeholder:text-black/30'}`}
                         placeholder="Or paste custom image URL..."
+                        title="Paste a URL for a custom avatar"
+                        aria-label="Custom Avatar URL"
                       />
                     </div>
                   </div>
@@ -354,31 +352,35 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
               )}
 
               <div>
-                <label className={`block text-xs font-bold tracking-widest uppercase mb-2 ${isDark ? 'text-white/50' : 'text-black/50'}`}>Email Address</label>
+                <label htmlFor="auth-email" className={`block text-xs font-bold tracking-widest uppercase mb-2 ${isDark ? 'text-white/50' : 'text-black/50'}`}>Email Address</label>
                 <div className="relative">
                   <Mail className={`absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 ${isDark ? 'text-white/40' : 'text-black/40'}`} />
                   <input 
+                    id="auth-email"
                     type="email" 
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className={`w-full pl-12 pr-4 py-3 rounded-xl border outline-none transition-colors ${isDark ? 'bg-black/50 border-white/10 focus:border-white/30 placeholder:text-white/30' : 'bg-white border-black/10 focus:border-black/30 placeholder:text-black/30'}`}
                     placeholder="you@example.com"
+                    title="Enter your email address"
                   />
                 </div>
               </div>
 
               <div>
-                <label className={`block text-xs font-bold tracking-widest uppercase mb-2 ${isDark ? 'text-white/50' : 'text-black/50'}`}>Password</label>
+                <label htmlFor="auth-password" className={`block text-xs font-bold tracking-widest uppercase mb-2 ${isDark ? 'text-white/50' : 'text-black/50'}`}>Password</label>
                 <div className="relative">
                   <Lock className={`absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 ${isDark ? 'text-white/40' : 'text-black/40'}`} />
                   <input 
+                    id="auth-password"
                     type="password" 
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className={`w-full pl-12 pr-4 py-3 rounded-xl border outline-none transition-colors ${isDark ? 'bg-black/50 border-white/10 focus:border-white/30 placeholder:text-white/30' : 'bg-white border-black/10 focus:border-black/30 placeholder:text-black/30'}`}
                     placeholder="••••••••"
+                    title="Enter your password"
                   />
                 </div>
               </div>
@@ -386,6 +388,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
               <button 
                 type="submit"
                 disabled={loading}
+                title={isLogin ? 'Sign in to your account' : 'Create a new account'}
                 className={`w-full py-4 rounded-xl font-bold tracking-widest uppercase text-xs transition-all ${loading ? 'opacity-50 cursor-not-allowed' : ''} ${isDark ? 'bg-white text-black hover:bg-white/90' : 'bg-black text-white hover:bg-black/90'}`}
               >
                 {loading ? 'Processing...' : (isLogin ? 'Sign In' : 'Create Account')}
@@ -401,6 +404,8 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
             <button
               onClick={handleGoogleLogin}
               disabled={loading}
+              title="Sign in with your Google account"
+              aria-label="Sign in with Google"
               className={`w-full mt-6 py-4 rounded-xl font-bold tracking-widest uppercase text-xs transition-all border flex items-center justify-center gap-3 ${loading ? 'opacity-50 cursor-not-allowed' : ''} ${isDark ? 'bg-black border-white/20 hover:bg-white/5' : 'bg-white border-black/20 hover:bg-black/5'}`}
             >
               <svg className="w-4 h-4" viewBox="0 0 24 24">

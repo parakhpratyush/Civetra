@@ -52,9 +52,9 @@ export const CustomCursor = () => {
         backgroundColor: 'white',
       }}
       animate={{
-        scale: isPointer ? 4 : 1,
+        scale: isPointer ? 2.5 : 1,
         backgroundColor: isPointer ? 'transparent' : 'white',
-        border: isPointer ? '0.5px solid white' : 'none',
+        border: isPointer ? '1px solid white' : 'none',
       }}
       transition={{ type: 'spring', stiffness: 250, damping: 20 }}
     />

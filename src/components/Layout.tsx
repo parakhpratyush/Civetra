@@ -104,7 +104,8 @@ export default function Layout({ children, header, isFullScreen }: LayoutProps) 
           whileTap={{ scale: 0.8 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
           className={`w-12 h-12 flex items-center justify-center rounded-full border transition-colors shadow-lg backdrop-blur-md outline-none focus:outline-none focus:ring-0 overflow-hidden ${isDark ? 'bg-black/50 border-white/20 text-white' : 'bg-white/80 border-black/10 text-black'}`}
-          title="Toggle UI Architecture"
+          title="Toggle between Dark and Light mode"
+          aria-label="Toggle Theme"
         >
           {isDark ? (
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
@@ -126,12 +127,15 @@ export default function Layout({ children, header, isFullScreen }: LayoutProps) 
               <div className="flex items-center gap-4 mt-2">
                 <p className="opacity-40 text-[10px]">© 2026 Civetra Platform. All Rights Reserved.</p>
                 <select 
+                  id="language-select-dark"
                   value={language}
                   onChange={(e) => {
                     setLanguage(e.target.value);
                     sessionStorage.setItem('civetra_session_lang', e.target.value);
                   }}
                   className="notranslate bg-white/5 border border-white/10 rounded-md text-xs px-2 py-1 outline-none focus:border-white/30 text-white/80 cursor-pointer"
+                  aria-label="Select Language (Dark Mode)"
+                  title="Change website language"
                 >
                   {languages.map(lang => (
                     <option key={lang} value={lang} className="bg-[#111]">{lang}</option>
@@ -172,12 +176,15 @@ export default function Layout({ children, header, isFullScreen }: LayoutProps) 
               <div className="flex items-center gap-4 mt-6">
                 <p className="opacity-40 text-xs font-sans">© 2026 Civetra Platform. All Rights Reserved.</p>
                 <select 
+                  id="language-select-light"
                   value={language}
                   onChange={(e) => {
                     setLanguage(e.target.value);
                     sessionStorage.setItem('civetra_session_lang', e.target.value);
                   }}
                   className="notranslate bg-black/5 border border-black/10 rounded-md text-xs px-2 py-1 outline-none focus:border-black/30 text-black/80 cursor-pointer"
+                  aria-label="Select Language (Light Mode)"
+                  title="Change website language"
                 >
                   {languages.map(lang => (
                     <option key={lang} value={lang}>{lang}</option>
@@ -187,8 +194,8 @@ export default function Layout({ children, header, isFullScreen }: LayoutProps) 
             </div>
             <div className="flex flex-col md:items-end justify-between font-sans">
               <div className="flex gap-6 text-sm font-medium tracking-wide">
-                <a href={`tel:${helpline}`} className="hover:text-primary transition-colors  border-b border-black/10 hover:border-black/50 pb-1">Emergency {helpline}</a>
-                <a href={`mailto:${supportEmail}`} className="hover:text-primary transition-colors  border-b border-black/10 hover:border-black/50 pb-1">Contact Us</a>
+                <a href={`tel:${helpline}`} className="hover:text-primary transition-colors  border-b border-black/10 hover:border-black/50 pb-1" aria-label="Call Emergency Helpline">Emergency {helpline}</a>
+                <a href={`mailto:${supportEmail}`} className="hover:text-primary transition-colors  border-b border-black/10 hover:border-black/50 pb-1" aria-label="Contact Support">Contact Us</a>
               </div>
               <div className="flex flex-wrap gap-4 mt-8 md:mt-0 opacity-60 text-xs font-bold tracking-wider uppercase">
                 <a href="https://twitter.com/civetra" target="_blank" rel="noreferrer" className="hover:opacity-100 transition-all ">Twitter</a>

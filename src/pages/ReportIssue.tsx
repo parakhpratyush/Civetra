@@ -465,7 +465,7 @@ export function ReportIssue() {
                   <label className="relative aspect-square rounded-xl overflow-hidden bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 border-dashed flex flex-col items-center justify-center cursor-pointer hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
                     <Plus className="w-6 h-6 opacity-40 mb-1" />
                     <span className="text-[10px] font-bold tracking-widest uppercase opacity-40">Add More</span>
-                    <input type="file" multiple accept="image/*,video/*,.pdf" className="hidden" onChange={handleFileInput} />
+                    <input type="file" multiple accept="image/*,video/*,.pdf" className="hidden" onChange={handleFileInput} title="Add more media files" aria-label="Add more media" />
                   </label>
                 </div>
               ) : showCamera ? (
@@ -504,9 +504,9 @@ export function ReportIssue() {
                         <p className="text-xs text-slate-500 dark:text-slate-500 mt-2">Photos, Videos, or Documents up to 10MB</p>
                       </div>
                       <div className="flex flex-col sm:flex-row text-xs text-slate-600 dark:text-slate-400 justify-center gap-3 mt-6">
-                        <label className="relative bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 shadow-sm px-5 py-2.5 rounded-xl font-bold tracking-wider uppercase text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/10 transition-colors focus-within:outline-none cursor-pointer">
+                        <label className="relative bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 shadow-sm px-5 py-2.5 rounded-xl font-bold tracking-wider uppercase text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/10 transition-colors focus-within:outline-none cursor-pointer" title="Browse your files to upload evidence">
                           <span>Browse</span>
-                          <input type="file" multiple accept="image/*,video/*,.pdf" className="hidden" onChange={handleFileInput} />
+                          <input type="file" multiple accept="image/*,video/*,.pdf" className="hidden" onChange={handleFileInput} aria-label="Upload evidence" />
                         </label>
                         <button 
                           type="button" 
@@ -562,6 +562,8 @@ export function ReportIssue() {
                    zoom={15} 
                    style={{ height: "100%", width: "100%" }}
                    zoomControl={false}
+                   aria-label="Interactive map to select issue location"
+                   title="Interactive map to select issue location"
                  >
                    <MapUpdater center={coordinates} />
                    <ZoomLimiter mapType={mapType} onLimitReached={handleZoomLimitReached} />
