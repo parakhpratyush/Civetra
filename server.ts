@@ -381,6 +381,10 @@ Return ONLY the raw text of the post. Do not use quotes around it.`;
     const distPath = path.join(process.cwd(), "dist");
     app.use(express.static(distPath));
     app.get("*", (req, res) => {
+      // Don't serve index.html for Firebase internal paths
+      if (req.path.startsWith("/__/")) {
+        return res.status(404).end();
+      }
       res.sendFile(path.join(distPath, "index.html"));
     });
   }
