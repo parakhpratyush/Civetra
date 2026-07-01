@@ -29,16 +29,18 @@ export const CustomCursor = () => {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-6 h-6 rounded-full pointer-events-none z-[999999] mix-blend-difference hidden md:block"
+      className="fixed top-0 left-0 w-3 h-3 rounded-full pointer-events-none z-[999999] mix-blend-difference hidden md:block"
       style={{
         translateX: cursorX,
         translateY: cursorY,
         backgroundColor: 'white',
       }}
       animate={{
-        scale: isPointer ? 2.5 : 1,
+        scale: isPointer ? 4 : 1,
+        backgroundColor: isPointer ? 'transparent' : 'white',
+        border: isPointer ? '0.5px solid white' : 'none',
       }}
-      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+      transition={{ type: 'spring', stiffness: 250, damping: 20 }}
     />
   );
 };
