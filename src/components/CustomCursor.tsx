@@ -10,17 +10,33 @@ export const CustomCursor = () => {
   const cursorY = useSpring(0, springConfig);
 
   useEffect(() => {
+    let lastTarget: EventTarget | null = null;
+    
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-      cursorX.set(e.clientX - 12);
-      cursorY.set(e.clientY - 12);
+      // Center the 3px dot exactly on the mouse point
+      cursorX.set(e.clientX - 1.5);
+      cursorY.set(e.clientY - 1.5);
 
       const target = e.target as HTMLElement;
-      setIsPointer(
-        window.getComputedStyle(target).cursor === 'pointer' || 
-        target.tagName === 'A' || 
-        target.tagName === 'BUTTON'
-      );
+      if (!target || target === lastTarget) return;
+      lastTarget = target;
+
+      // Ensure target is still in DOM before checking styles
+      if (document.body.contains(target)) {
+        try {
+          const styles = window.getComputedStyle(target);
+          setIsPointer(
+            styles.cursor === 'pointer' || 
+            target.tagName === 'A' || 
+            target.tagName === 'BUTTON' ||
+            target.closest('button') !== null ||
+            target.closest('a') !== null
+          );
+        } catch (err) {
+          // If node is detached during check
+          setIsPointer(false);
+        }
+      }
     };
 
     window.addEventListener('mousemove', handleMouseMove);
