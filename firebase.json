@@ -8,20 +8,10 @@
     ],
     "rewrites": [
       {
-        "source": "!{/__/**,/__}",
+        "source": "**",
         "destination": "/index.html"
       }
     ],
-    "headers": [
-      {
-        "source": "/**",
-        "headers": [
-          {
-            "key": "Cross-Origin-Opener-Policy",
-            "value": "same-origin-allow-popups"
-          }
-        ]
-      }
     ]
   }
 }

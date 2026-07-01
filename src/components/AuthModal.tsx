@@ -163,7 +163,6 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
     setLoading(true);
     try {
       const provider = new GoogleAuthProvider();
-      provider.setCustomParameters({ prompt: 'select_account' });
       const userCredential = await signInWithPopup(auth, provider);
       const user = userCredential.user;
       const additionalInfo = getAdditionalUserInfo(userCredential);

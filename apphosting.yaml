@@ -1,9 +1,0 @@
-# Firebase App Hosting Configuration
-# This file handles security headers for the .hosted.app domain
-headers:
-  - path: /**
-    headers:
-      - key: Cross-Origin-Opener-Policy
-        value: same-origin-allow-popups
-      - key: Cross-Origin-Embedder-Policy
-        value: unsafe-none
