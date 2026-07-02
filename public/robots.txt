@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://civetra.firebaseapp.com/sitemap.xml
+Sitemap: https://civetra-ai-brain--civetra.us-east4.hosted.app/sitemap.xml
