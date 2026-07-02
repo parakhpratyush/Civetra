@@ -7,13 +7,13 @@ import {
 import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyBe0n4b1iIemFx898anZdoc-wtkZED8mCQ",
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "civetra.firebaseapp.com",
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "civetra",
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "civetra.firebasestorage.app",
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "382651028258",
-  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:382651028258:web:a326a5f9650cae1f9c4b7b",
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || "G-61F2MF882V"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 // Build version to track deployment updates

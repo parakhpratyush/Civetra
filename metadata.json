@@ -1,8 +1,0 @@
-{
-  "name": "Civetra",
-  "description": "Hyperlocal Community Problem Solver Powered by Gemini AI",
-  "requestFramePermissions": [
-    "geolocation"
-  ],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}

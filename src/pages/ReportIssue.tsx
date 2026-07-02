@@ -215,7 +215,7 @@ export function ReportIssue() {
     }, 2000);
   };
 
-  const apiKey = import.meta.env.VITE_TOMTOM_API_KEY || "qKqvvu1BGebLyTDHPbMupT2g45XJVZm7";
+  const apiKey = import.meta.env.VITE_TOMTOM_API_KEY;
   const tileUrl = mapType === "basic" 
     ? `https://api.tomtom.com/map/1/tile/basic/main/{z}/{x}/{y}.png?key=${apiKey}`
     : `https://api.tomtom.com/map/1/tile/sat/main/{z}/{x}/{y}.jpg?key=${apiKey}`;
