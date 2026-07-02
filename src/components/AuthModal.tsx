@@ -163,6 +163,10 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
     setLoading(true);
     try {
       const provider = new GoogleAuthProvider();
+      // Force account selection every time for better UX
+      provider.setCustomParameters({
+        prompt: 'select_account'
+      });
       const userCredential = await signInWithPopup(auth, provider);
       const user = userCredential.user;
       const additionalInfo = getAdditionalUserInfo(userCredential);
@@ -386,6 +390,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                     id="auth-password"
                     type="password" 
                     required
+                    autoComplete="current-password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className={`w-full pl-12 pr-4 py-3 rounded-xl border outline-none transition-colors ${isDark ? 'bg-black/50 border-white/10 focus:border-white/30 placeholder:text-white/30' : 'bg-white border-black/10 focus:border-black/30 placeholder:text-black/30'}`}

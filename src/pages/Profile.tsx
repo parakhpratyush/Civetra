@@ -580,6 +580,7 @@ export function Profile() {
                   <label className={`block text-xs font-bold tracking-widest uppercase mb-2 ${isDark ? 'text-white/50' : 'text-black/50'}`}>Confirm Password</label>
                   <input 
                     type="password" 
+                    autoComplete="current-password"
                     value={passwordForDelete}
                     onChange={(e) => setPasswordForDelete(e.target.value)}
                     className={`w-full max-w-sm px-4 py-3 rounded-xl border outline-none transition-colors ${isDark ? 'bg-black/50 border-white/10 focus:border-white/30 text-white' : 'bg-white border-black/10 focus:border-black/30 text-black'}`}

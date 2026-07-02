@@ -35,6 +35,33 @@ async function startServer() {
   app.use(express.json({ limit: "50mb" }));
 
   // ==========================================
+  // RATE LIMITING (Security Patch)
+  // ==========================================
+  const rateLimits: Record<string, { count: number; lastReset: number }> = {};
+  const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
+  const MAX_REQUESTS = 50; // 50 requests per minute
+
+  const simpleRateLimiter = (req: any, res: any, next: any) => {
+    const ip = req.ip || req.get('x-forwarded-for') || req.socket.remoteAddress;
+    const now = Date.now();
+    
+    if (!rateLimits[ip] || now - rateLimits[ip].lastReset > RATE_LIMIT_WINDOW) {
+      rateLimits[ip] = { count: 1, lastReset: now };
+    } else {
+      rateLimits[ip].count++;
+    }
+    
+    if (rateLimits[ip].count > MAX_REQUESTS) {
+      console.warn(`Rate limit exceeded for IP: ${ip}`);
+      return res.status(429).json({ error: "Too many requests. Please try again later." });
+    }
+    next();
+  };
+
+  // Apply rate limiter to all API routes
+  app.use("/api/", simpleRateLimiter);
+
+  // ==========================================
   // GET ICON ENDPOINT
   // ==========================================
   app.post("/api/get-icon", async (req, res) => {
