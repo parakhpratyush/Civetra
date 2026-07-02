@@ -1,64 +1,109 @@
-# 🛡️ CIVETRA: The Sovereign Civic Trust Engine
-### *Visual Intelligence. Proactive Governance. Absolute Transparency.*
-
-**Civetra** is a world-class, multi-modal civic technology ecosystem designed to bridge the gap between citizens and city administration. Built from the ground up on the **Antigravity** agentic framework and powered by **Google’s Gemini AI**, Civetra transforms urban maintenance into a transparent, gamified, and AI-optimized experience.
-
-> **[Technical Deep-Dive Available in Project.md](file:///D:/MY%20WORK/hackethon/antigravity/civetra-perfect/Project.md)**
+# 🛡️ CIVETRA
+### **The Sovereign Civic Trust Engine**
+*Visual Intelligence. Proactive Governance. Absolute Transparency.*
 
 ---
 
-## 🚀 The Evolution: Feature Masterlist
-From a blank screen to a live, AI-powered PWA, here is everything we have engineered for the **vibe2ship Hackathon**:
+<p align="center">
+  <img src="civetra_hero_banner_1782977509917.png" alt="Civetra Hero Banner" width="100%"/>
+</p>
 
-### 1. 🍎 "Apple-Grade" Installation (PWA Mastery)
-- **Zero-Friction Installation**: Fully installable as a standalone app on iOS, Android, and Desktop.
-- **Offline Resilience**: Utilizing Service Workers and IndexedDB, Civetra maintains core functionality even in zero-connectivity environments.
-- **Premium Branding**: Custom-engineered iconography (192x192 & 512x512) for a native app feel on any device.
+<p align="center">
+  <a href="#-core-vision">Vision</a> •
+  <a href="#-feature-ecosystem">Features</a> •
+  <a href="#-technical-architecture">Architecture</a> •
+  <a href="#-security-posture">Security</a> •
+  <a href="#-getting-started">Deployment</a>
+</p>
 
-### 2. 👁️ The "Civic Lens" (Visual Intelligence)
-- **Gemini Pro Vision Integration**: Our proprietary "eyes." Point your camera at a pothole or broken pipe, and the AI handles the rest.
-- **Autonomous Metadata**: Instantly generates Category, Severity, and Priority levels from raw pixel data—zero manual typing required.
-- **Smart Moderation**: Real-time filtering to ensure the platform remains 100% focused on civic infrastructure, blocking political or off-topic noise.
-
-### 3. 🧠 Agentic Brain & CivicBot
-- **CivicBot Guardian**: A context-aware agent built on **Gemini Flash**. It guides users, answers FAQs, and maintains community standards with high emotional intelligence.
-- **Predictive Foresight Ticker**: A live, AI-generated ticker that scans community data streams to predict and warn of escalating risks (e.g., "Increasing reports of water logging in Sector 7").
-- **Real-Time Spatial Truth**: Interactive, clustered mapping that provides a "single source of truth" for the community, updated instantly via Firebase.
-
-### 4. 🎨 Dual-Theme Design Engineering
-- **Obsidian Dark Mode**: A premium, high-contrast interface for "Command Center" operations, utilizing Glassmorphism and neon accents.
-- **Radiant Light Mode**: Optimized for outdoor, on-site reporting with high-contrast typography and pristine readability.
-- **3D Hero Visuals**: Integration of Three.js and React Three Fiber for a stunning, interactive 3D landing experience.
-
-### 5. 🏆 Gamification & Trust
-- **Community Hero System**: Automated badge and certificate generation for active contributors.
-- **Reputation Engine**: A dynamic "Trust Score" that rewards high-quality reporting and community verification.
+<p align="center">
+  <img src="https://img.shields.io/badge/AI-Gemini%20Ultra%20%2F%20Flash-blue?style=for-the-badge&logo=google-gemini" alt="AI Engine"/>
+  <img src="https://img.shields.io/badge/Frontend-React%20%2B%20Vite-61DAFB?style=for-the-badge&logo=react" alt="Frontend Stack"/>
+  <img src="https://img.shields.io/badge/Security-Environment%20Variable%20Hardened-green?style=for-the-badge&logo=google-cloud" alt="Security Status"/>
+</p>
 
 ---
 
-## 🛠️ The Powerhouse Tech Stack
-- **Agentic Core**: Antigravity Framework (The master orchestrator).
-- **AI Engines**: Google Gemini Pro Vision & Gemini Flash.
-- **Infrastructure**: Google Cloud Platform (App Hosting, Cloud Run).
-- **Database**: Google Firebase Firestore (Real-time sync).
-- **Authentication**: Firebase Auth (Secure Identity).
-- **Frontend**: React (Vite), TypeScript, Tailwind CSS, Framer Motion, Three.js.
+## 🏛️ Core Vision
+**Civetra** is not just a reporting tool; it is a **Sovereign Trust Layer** for modern urbanity. It bridges the critical "trust deficit" between citizens and administration by using **Visual Intelligence** to turn subjective complaints into objective, actionable data. 
+
+Built on the **Antigravity** agentic framework, Civetra automates the entire civic lifecycle—from the moment a citizen spots an issue to the final verification of its resolution.
 
 ---
 
-## 📦 Installation & Developer Guide
-### Prerequisites
-- Node.js v20+
-- Firebase CLI
-- Google Cloud Project with Gemini API Access.
+## 💎 Feature Ecosystem
 
-### Setup
+### 👁️ **The Civic Lens (Multi-Modal AI)**
+*Powered by Google Gemini Pro Vision*
+- **Autonomous Triage**: Point your camera, and the AI instantly generates category, severity, and urgency levels.
+- **Visual Validation**: Real-time filtering prevents off-topic noise, ensuring the platform remains dedicated to infrastructure.
+- **Smart Metadata**: GPS and timestamp embedding creates a "Single Source of Truth" for every report.
+
+### 🧠 **CivicBot: The Intelligent Guardian**
+*Powered by Google Gemini Flash*
+- **Contextual Assistance**: A high-EQ AI agent that guides users through complex civic processes.
+- **Predictive Risk Engine**: A live ticker that analyzes community data to forecast infrastructure failures before they happen.
+- **Real-Time Synthesis**: Automatically summarizes hundreds of reports into actionable "Executive Briefs" for officials.
+
+### 📱 **Apple-Grade Installation (PWA)**
+- **Native Performance**: Fully installable on iOS, Android, and Desktop with zero friction.
+- **Offline Resilience**: Service Workers allow reporting even in low-connectivity "dead zones."
+- **Obsidian Design System**: A premium, Glassmorphic UI optimized for both bright sunlight and low-light operations.
+
+---
+
+## 🏗️ Technical Architecture
+
+```mermaid
+graph TD
+    A[Citizen Interface] -->|Visual Data| B(Gemini Pro Vision)
+    B -->|Metadata Extraction| C{Antigravity Agent}
+    C -->|Auto-Categorize| D[Firestore Real-time DB]
+    C -->|Risk Assessment| E[CivicBot Brain]
+    D -->|Spatial Clustering| F[Interactive Map Layer]
+    E -->|Predictive Warnings| G[Live Risk Ticker]
+    F -->|Public Verification| H[Community Trust Score]
+```
+
+---
+
+## 🛡️ Security Posture
+Civetra is engineered with **Zero-Leakage Architecture**. We adhere to the highest industry standards for data privacy and credential management.
+
+- **Strict Environment Separation**: 100% of API keys and secrets are managed via `import.meta.env` and server-side `process.env`.
+- **Credential Rotation**: All cloud services (Firebase, TomTom, Gemini) are restricted by domain and IP to prevent unauthorized use.
+- **Zero Hardcoded Secrets**: Our repository is regularly scrubbed to ensure no cryptographic material ever touches the source control.
+
+---
+
+## 📦 Getting Started
+
+### 1. Repository Setup
 ```bash
 git clone https://github.com/parakhpratyush/Civetra.git
 cd Civetra
+```
+
+### 2. Environment Configuration
+Create a `.env` file in the root directory. Use [.env.example](file:///D:/MY%20WORK/hackethon/antigravity/civetra-perfect/.env.example) as a template.
+
+```properties
+VITE_FIREBASE_API_KEY=your_key
+VITE_TOMTOM_API_KEY=your_key
+GEMINI_API_KEY=your_key
+```
+
+### 3. Execution
+```bash
 npm install
 npm run dev
 ```
 
 ---
-*Built with visionary precision for the **vibe2ship Hackathon**.*
+
+## 🏆 Project Recognition
+*Built for the **vibe2ship Hackathon** as a showcase of the next generation of Agentic Civic Technology.*
+
+<p align="right">
+  <sub>Managed with 💙 by the Civetra Core Team.</sub>
+</p>
