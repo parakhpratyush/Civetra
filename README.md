@@ -5,7 +5,7 @@
 ---
 
 <p align="center">
-  <img src="civetra_hero_banner_1782977509917.png" alt="Civetra Hero Banner" width="100%"/>
+  <img src="public/images/hero-banner.png" alt="Civetra Hero Banner" width="100%"/>
 </p>
 
 <p align="center">
