@@ -149,7 +149,7 @@ export function MapPage() {
     }, 2000);
   };
 
-  const apiKey = import.meta.env.VITE_TOMTOM_API_KEY || "qKqvvu1BGebLyTDHPbMupT2g45XJVZm7";
+  const apiKey = import.meta.env.VITE_TOMTOM_API_KEY;
   
   const tileUrl = mapType === "basic" 
     ? (isDark 
